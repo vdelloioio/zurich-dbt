@@ -1,6 +1,6 @@
 version: 2
 
-models:
+snapshots:
   - name: persone_scd2
     config: 
       materialized: incremental
@@ -17,10 +17,10 @@ models:
       - name: nome
         data_type: string
         description: nome della persona che ha fatto l'acquisto
-        tests:
+        data_tests:
           - not_null
       - name: cognome
         data_type: string
         description: cognome della persona che ha fatto l'acquisto
-        tests:
+        data_tests:
           - not_null
