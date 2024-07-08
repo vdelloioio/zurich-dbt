@@ -46,4 +46,4 @@ models:
 snapshots:
   my_new_project:
     silver:
-      +target_schema: silver
+      +target_schema: dbt_vdelloioio_silver

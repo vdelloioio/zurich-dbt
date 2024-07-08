@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: persone_scd2
+    config: 
+      materialized: incremental
+      unique_key: 
+        - 'id_persona'
+    description: Tabella degli delle persone. Primary Key id_persona
+    columns:
+      - name: id_persona
+        data_type: integer
+        description: Primary key, id della persona
+        constraints:
+          - type: not_null
+          - type: primary_key
+      - name: nome
+        data_type: string
+        description: nome della persona che ha fatto l'acquisto
+        tests:
+          - not_null
+      - name: cognome
+        data_type: string
+        description: cognome della persona che ha fatto l'acquisto
+        tests:
+          - not_null

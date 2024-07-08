@@ -19,7 +19,7 @@ models:
         description: id della persona che ha fatto l'acquisto
         constraints:
           - type: foreign_key
-            expression: "(id_persona) REFERENCES persone_ripulita (id_persona)"
+            expression: "(id_persona) REFERENCES persone_scd2 (id_persona)"
       - name: importo
         data_type: float
         description: importo dell'ordine
