@@ -2,6 +2,10 @@ version: 2
 
 models:
   - name: ordini_ripulita
+    config: 
+      materialized: incremental
+      unique_key: 
+        - 'id_ordine'
     description: Tabella degli ordini. Primary Key id_ordine
     columns:
       - name: id_ordine

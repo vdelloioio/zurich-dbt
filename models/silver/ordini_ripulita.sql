@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        unique_key=['id_ordine']
-    )
-}}
-
 select *
 from `catalog-zurich-01`.bronze.ordini_validated
 where id_ordine is not null
