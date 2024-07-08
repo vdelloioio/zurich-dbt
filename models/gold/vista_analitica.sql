@@ -1,7 +1,12 @@
-with src as (
-    select concat(nome, '_', cognome) nome_cognome, importo
+with pers (
+    select id_persona, concat(nome, '_', cognome) nome_cognome
+    from {{ ref('persone_scd2') }}
+    where dbt_valid_to is null
+),
+src as (
+    select nome_cognome, importo
     from {{ ref('ordini_ripulita') }} ord
-        join {{ ref('persone_ripulita') }} pers
+        join pers
             on ord.id_persona = pers.id_persona
 )
 

@@ -42,3 +42,8 @@ models:
       +schema: silver
     gold:
       +schema: gold
+
+snapshots:
+  my_new_project:
+    silver:
+      +target_schema: silver
