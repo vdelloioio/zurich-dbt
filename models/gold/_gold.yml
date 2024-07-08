@@ -15,5 +15,5 @@ models:
       - name: importo
         data_type: float
         description: importo dell'ordine
-        tests:
+        data_tests:
           - not_null
