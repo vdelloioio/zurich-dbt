@@ -3,7 +3,6 @@ version: 2
 snapshots:
   - name: persone_scd2
     config: 
-      materialized: incremental
       unique_key: 
         - 'id_persona'
     description: Tabella degli delle persone. Primary Key id_persona
