@@ -7,11 +7,13 @@ models:
     description: vista analitica finale
     columns:
       - name: nome_cognome
+        data_type: string
         description: concatenazione tra nome e cognome della persona che ha fatto l'acquisto
         tests:
           - not_null
           - unique
       - name: importo
+        data_type: float
         description: importo dell'ordine
         tests:
           - not_null
