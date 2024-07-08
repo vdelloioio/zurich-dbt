@@ -9,16 +9,17 @@ models:
     description: Tabella degli ordini. Primary Key id_ordine
     columns:
       - name: id_ordine
+        constraints:
+          - type: not_null
+          - type: primary_key
         data_type: integer
         description: Primary key, id dell'ordine
-        tests:
-          - unique
-          - not_null
       - name: id_persona
         data_type: integer
         description: id della persona che ha fatto l'acquisto
-        tests:
-          - not_null
+        constraints:
+          - type: foreign_key
+            expression: "(id_persona) REFERENCES persone_scd2 (id_persona)"
       - name: importo
         data_type: float
         description: importo dell'ordine
@@ -34,9 +35,9 @@ models:
       - name: id_persona
         data_type: integer
         description: Primary key, id della persona
-        tests:
-          - unique
-          - not_null
+        constraints:
+          - type: not_null
+          - type: primary_key
       - name: nome
         data_type: string
         description: nome della persona che ha fatto l'acquisto
