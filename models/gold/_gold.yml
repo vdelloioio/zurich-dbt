@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: vista_analitica
+    config:
+      materialized: view
+    description: vista analitica finale
+    columns:
+      - name: nome_cognome
+        description: concatenazione tra nome e cognome della persona che ha fatto l'acquisto
+        tests:
+          - not_null
+          - unique
+      - name: importo
+        description: importo dell'ordine
+        tests:
+          - not_null
