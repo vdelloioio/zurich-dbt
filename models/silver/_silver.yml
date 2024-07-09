@@ -6,20 +6,30 @@ models:
       materialized: incremental
       unique_key: 
         - 'id_ordine'
+      contract:
+        enforced: true
+      on_schema_change: fail
     description: Tabella degli ordini. Primary Key id_ordine
+    # constraints:
+    #   - type: primary_key # non funziona
+    #     columns: [id_ordine]
+    #   - type: foreign_key # non funziona
+    #     columns: [id_persona]
+    #     expression: "persone_scd2 (id_persona)"
+    #   - type: check # non funziona
+    #     columns: [id_persona]
+    #     expression: "id_persona in (select distinct id_persona from `catalog-zurich-01`.silver.persone_scd2)"
+    #     name: fk_id_persona
     columns:
       - name: id_ordine
-        constraints:
-          - type: not_null
-          - type: primary_key
         data_type: integer
         description: Primary key, id dell'ordine
       - name: id_persona
         data_type: integer
         description: id della persona che ha fatto l'acquisto
         constraints:
-          - type: foreign_key
-            expression: "(id_persona) REFERENCES persone_scd2 (id_persona)"
+          - type: check
+            expression: "id_persona in (select distinct id_persona from `catalog-zurich-01`.silver.persone_scd2)"
       - name: importo
         data_type: float
         description: importo dell'ordine
@@ -35,9 +45,6 @@ models:
       - name: id_persona
         data_type: integer
         description: Primary key, id della persona
-        constraints:
-          - type: not_null
-          - type: primary_key
       - name: nome
         data_type: string
         description: nome della persona che ha fatto l'acquisto
